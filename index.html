@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vanya Esmalteira — manicure, pedicure, blindagem e banho de gel.">
+  <title>Vanya Esmalteira | Unhas & Beleza</title>
+
+  <style>
+    :root{
+      --pink:#FF1D8D;
+      --pink-dark:#d9006d;
+      --pink-soft:#ffd6ea;
+      --pink-pale:#fff1f8;
+      --ink:#191319;
+      --muted:#756a72;
+      --white:#fff;
+      --black:#0c0a0d;
+      --line:rgba(25,19,25,.10);
+      --shadow:0 24px 70px rgba(139,8,80,.16);
+      --radius:28px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{display:block;width:100%}
+    button,input,select{font:inherit}
+
+    .container{width:min(var(--max),calc(100% - 36px));margin:auto}
+
+    /* ================= HEADER ================= */
+    header{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:1000;
+      transition:.3s ease;
+    }
+    header.scrolled{
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(18px);
+      box-shadow:0 8px 28px rgba(0,0,0,.07);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:11px;
+    }
+    .logo-icon{
+      width:45px;height:45px;border-radius:50%;
+      background:var(--black);
+      color:var(--pink);
+      display:grid;place-items:center;
+      border:2px solid var(--pink);
+      font-family:Georgia,serif;
+      font-size:19px;
+      box-shadow:0 7px 20px rgba(255,29,141,.18);
+    }
+    .logo strong{
+      display:block;
+      font-family:Georgia,serif;
+      font-size:18px;
+      letter-spacing:.4px;
+    }
+    .logo span{
+      display:block;
+      color:var(--pink);
+      text-transform:uppercase;
+      font-size:9px;
+      letter-spacing:2px;
+      font-weight:800;
+      margin-top:-2px;
+    }
+    nav{display:flex;gap:28px;align-items:center}
+    nav a{
+      font-size:14px;
+      font-weight:600;
+      color:#625960;
+      transition:.25s;
+    }
+    nav a:hover{color:var(--pink)}
+    .nav-btn,.btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:9px;
+      border:0;
+      border-radius:999px;
+      padding:13px 21px;
+      background:var(--pink);
+      color:#fff;
+      font-weight:800;
+      font-size:14px;
+      cursor:pointer;
+      transition:.25s;
+      box-shadow:0 12px 28px rgba(255,29,141,.22);
+    }
+    .nav-btn:hover,.btn:hover{
+      background:var(--pink-dark);
+      transform:translateY(-2px);
+    }
+    .menu{
+      display:none;
+      border:0;background:none;
+      font-size:27px;
+      cursor:pointer;
+      color:var(--ink);
+      width:44px;height:44px;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      min-height:830px;
+      padding:150px 0 90px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 88% 22%, rgba(255,29,141,.13), transparent 29%),
+        radial-gradient(circle at 8% 90%, rgba(255,29,141,.08), transparent 26%),
+        #fff;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:650px;height:650px;
+      border-radius:50%;
+      border:1px solid rgba(255,29,141,.14);
+      right:-310px;top:70px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:70px;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--pink);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:11px;
+      margin-bottom:19px;
+    }
+    .eyebrow:before{
+      content:"";
+      width:28px;height:2px;background:var(--pink);
+      border-radius:9px;
+    }
+    h1{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(50px,6.5vw,82px);
+      line-height:.96;
+      letter-spacing:-3px;
+      font-weight:400;
+      max-width:650px;
+    }
+    h1 em{
+      font-style:italic;
+      color:var(--pink);
+    }
+    .hero-copy{
+      color:var(--muted);
+      max-width:590px;
+      font-size:17px;
+      margin:25px 0 29px;
+    }
+    .hero-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .outline{
+      background:transparent;
+      color:var(--ink);
+      border:1px solid rgba(25,19,25,.18);
+      box-shadow:none;
+    }
+    .outline:hover{
+      background:var(--pink-pale);
+      color:var(--pink-dark);
+      border-color:var(--pink-soft);
+    }
+    .hero-info{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-top:36px;
+    }
+    .mini-stat{
+      padding-right:18px;
+      border-right:1px solid var(--line);
+    }
+    .mini-stat:last-child{border-right:0}
+    .mini-stat strong{
+      display:block;
+      font-family:Georgia,serif;
+      font-size:20px;
+      font-weight:500;
+    }
+    .mini-stat span{
+      display:block;
+      font-size:11px;
+      color:var(--muted);
+    }
+    .hero-image-wrap{
+      position:relative;
+      max-width:510px;
+      margin-left:auto;
+    }
+    .hero-image{
+      height:620px;
+      object-fit:cover;
+      border-radius:250px 250px 30px 30px;
+      box-shadow:var(--shadow);
+      border:8px solid #fff;
+    }
+    .hero-badge{
+      position:absolute;
+      left:-40px;
+      bottom:28px;
+      background:var(--black);
+      color:#fff;
+      padding:17px 21px;
+      border-radius:19px;
+      box-shadow:0 17px 45px rgba(0,0,0,.17);
+    }
+    .hero-badge strong{
+      display:block;
+      color:var(--pink);
+      font-size:15px;
+    }
+    .hero-badge span{
+      display:block;
+      color:#c7c1c6;
+      font-size:11px;
+      margin-top:3px;
+    }
+
+    /* ================= SERVICES ================= */
+    section{padding:105px 0}
+    .section-head{
+      max-width:720px;
+      margin-bottom:50px;
+    }
+    .center{text-align:center;margin-left:auto;margin-right:auto}
+    .section-title{
+      font-family:Georgia,serif;
+      font-size:clamp(37px,4.7vw,57px);
+      line-height:1.02;
+      font-weight:400;
+      letter-spacing:-1.6px;
+      margin-bottom:15px;
+    }
+    .subtitle{color:var(--muted);font-size:16px}
+
+    .services{background:var(--black);color:#fff}
+    .services .subtitle{color:#bcb4ba}
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:17px;
+    }
+    .service{
+      position:relative;
+      overflow:hidden;
+      min-height:275px;
+      padding:28px;
+      border-radius:var(--radius);
+      background:linear-gradient(145deg,#191419,#100e12);
+      border:1px solid rgba(255,255,255,.08);
+      transition:.3s;
+    }
+    .service:hover{transform:translateY(-8px);border-color:rgba(255,29,141,.4)}
+    .service-icon{
+      width:56px;height:56px;
+      border-radius:50%;
+      display:grid;place-items:center;
+      background:rgba(255,29,141,.14);
+      color:var(--pink);
+      font-size:24px;
+      margin-bottom:32px;
+    }
+    .service h3{
+      font-family:Georgia,serif;
+      font-size:25px;
+      font-weight:400;
+      margin-bottom:8px;
+    }
+    .service p{color:#aaa1a8;font-size:14px}
+    .service-number{
+      position:absolute;
+      top:15px;right:18px;
+      color:rgba(255,255,255,.14);
+      font-family:Georgia,serif;
+    }
+
+    /* ================= ABOUT ================= */
+    .about-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:78px;
+      align-items:center;
+    }
+    .about-photo{
+      position:relative;
+      max-width:520px;
+    }
+    .about-photo img{
+      height:580px;
+      object-fit:cover;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+    }
+    .about-photo:before{
+      content:"";
+      position:absolute;
+      width:135px;height:135px;
+      background:var(--pink);
+      border-radius:50%;
+      left:-35px;bottom:-35px;
+      z-index:-1;
+      opacity:.85;
+    }
+    .about-text p{
+      color:var(--muted);
+      font-size:16px;
+      margin:18px 0;
+    }
+    .checks{list-style:none;margin:28px 0 33px}
+    .checks li{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:12px 0;
+      font-size:14px;
+    }
+    .check{
+      width:23px;height:23px;
+      border-radius:50%;
+      background:var(--pink-pale);
+      color:var(--pink);
+      display:grid;place-items:center;
+      font-size:12px;
+      flex:none;
+    }
+
+    /* ================= GALLERY ================= */
+    .gallery{
+      background:var(--pink-pale);
+    }
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr .85fr;
+      grid-auto-rows:245px;
+      gap:14px;
+    }
+    .gallery-item{
+      overflow:hidden;
+      position:relative;
+      border-radius:22px;
+      background:#ddd;
+    }
+    .gallery-item:first-child{
+      grid-row:span 2;
+    }
+    .gallery-item img{
+      height:100%;
+      object-fit:cover;
+      transition:.5s;
+    }
+    .gallery-item:hover img{transform:scale(1.06)}
+    .gallery-item:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.45),transparent 35%);
+      pointer-events:none;
+    }
+    .gallery-caption{
+      position:absolute;
+      bottom:14px;left:14px;right:14px;
+      color:white;
+      z-index:2;
+      font-weight:700;
+      font-size:12px;
+    }
+
+    /* ================= DIFFERENTIAL ================= */
+    .differentials{background:#fff}
+    .diff-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .diff{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:30px;
+      background:#fff;
+      transition:.3s;
+    }
+    .diff:hover{
+      box-shadow:var(--shadow);
+      transform:translateY(-6px);
+    }
+    .diff .num{
+      color:var(--pink);
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+    .diff h3{
+      font-family:Georgia,serif;
+      font-size:24px;
+      font-weight:400;
+      margin:9px 0;
+    }
+    .diff p{color:var(--muted);font-size:14px}
+
+    /* ================= CTA ================= */
+    .cta-section{padding-top:0}
+    .cta{
+      background:var(--pink);
+      color:#fff;
+      border-radius:32px;
+      padding:62px;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
+    }
+    .cta:after{
+      content:"✦";
+      position:absolute;
+      font-size:260px;
+      right:35px;bottom:-100px;
+      color:rgba(255,255,255,.10);
+      font-family:Georgia,serif;
+    }
+    .cta h2{
+      font-family:Georgia,serif;
+      font-size:clamp(35px,4.3vw,56px);
+      font-weight:400;
+      line-height:1.02;
+      max-width:700px;
+    }
+    .cta p{
+      margin-top:11px;
+      color:rgba(255,255,255,.88);
+      max-width:650px;
+    }
+    .cta .btn{
+      background:var(--black);
+      position:relative;
+      z-index:2;
+      white-space:nowrap;
+      box-shadow:none;
+    }
+    .cta .btn:hover{background:#211a20}
+
+    /* ================= CONTACT ================= */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:18px;
+    }
+    .contact-card,.contact-photo{
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:#fff;
+      padding:34px;
+    }
+    .contact-card h3,.contact-photo h3{
+      font-family:Georgia,serif;
+      font-size:30px;
+      font-weight:400;
+      margin-bottom:22px;
+    }
+    .contact-line{
+      display:flex;
+      gap:13px;
+      margin:20px 0;
+    }
+    .contact-icon{
+      width:43px;height:43px;
+      border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--pink-pale);
+      color:var(--pink);
+      flex:none;
+    }
+    .contact-line small{
+      display:block;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1.1px;
+      font-size:10px;
+      margin-bottom:2px;
+    }
+    .contact-line strong{font-size:14px}
+    .contact-photo{
+      position:relative;
+      overflow:hidden;
+    }
+    .contact-photo img{
+      height:330px;
+      object-fit:cover;
+      border-radius:20px;
+    }
+    .overlay-tag{
+      position:absolute;
+      left:48px;bottom:48px;
+      padding:12px 15px;
+      border-radius:14px;
+      background:rgba(0,0,0,.64);
+      color:#fff;
+      backdrop-filter:blur(8px);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    /* ================= FOOTER ================= */
+    footer{
+      background:var(--black);
+      color:#cfc7cd;
+      padding:42px 0;
+    }
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:25px;
+    }
+    .footer-brand{
+      font-family:Georgia,serif;
+      color:white;
+      font-size:21px;
+    }
+    footer p{font-size:12px;color:#8f8790}
+    .social{
+      display:flex;gap:9px;
+    }
+    .social a{
+      width:38px;height:38px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.12);
+      color:#fff;
+      display:grid;place-items:center;
+      font-size:12px;
+      transition:.2s;
+    }
+    .social a:hover{background:var(--pink);border-color:var(--pink)}
+
+    /* ================= WHATSAPP / INSTAGRAM FLOAT ================= */
+    .float{
+      position:fixed;
+      z-index:998;
+      right:20px;bottom:20px;
+      width:58px;height:58px;
+      border-radius:50%;
+      background:var(--pink);
+      color:#fff;
+      display:grid;place-items:center;
+      font-size:21px;
+      box-shadow:0 18px 40px rgba(255,29,141,.28);
+      transition:.25s;
+    }
+    .float:hover{transform:scale(1.08)}
+
+    /* ================= MODAL ================= */
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:2000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      background:rgba(11,8,11,.63);
+      backdrop-filter:blur(7px);
+    }
+    .modal.active{display:flex}
+    .modal-box{
+      width:min(510px,100%);
+      background:#fff;
+      border-radius:28px;
+      padding:34px;
+      position:relative;
+      box-shadow:0 35px 100px rgba(0,0,0,.35);
+      animation:pop .25s ease;
+    }
+    @keyframes pop{
+      from{opacity:0;transform:translateY(12px) scale(.98)}
+      to{opacity:1;transform:none}
+    }
+    .close{
+      position:absolute;
+      right:17px;top:17px;
+      width:38px;height:38px;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:#fff;
+      cursor:pointer;
+      font-size:20px;
+    }
+    .modal-box h2{
+      font-family:Georgia,serif;
+      font-size:34px;
+      font-weight:400;
+    }
+    .modal-box p{
+      color:var(--muted);
+      font-size:13px;
+      margin:7px 0 23px;
+    }
+    .field{margin:13px 0}
+    .field label{
+      display:block;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:5px;
+    }
+    .field input,.field select{
+      width:100%;
+      border:1px solid #ddd4dc;
+      border-radius:12px;
+      padding:13px 14px;
+      background:#fff;
+      outline:none;
+    }
+    .field input:focus,.field select:focus{border-color:var(--pink)}
+    .modal .btn{width:100%;margin-top:8px}
+
+    /* ================= REVEAL ================= */
+    .reveal{
+      opacity:0;
+      transform:translateY(25px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:980px){
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .hero-image-wrap{margin:18px auto 0}
+      .about-photo{margin:auto}
+      .service-grid{grid-template-columns:repeat(2,1fr)}
+      .diff-grid{grid-template-columns:1fr}
+      .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-auto-rows:250px;
+      }
+      .gallery-item:first-child{grid-column:span 2;grid-row:span 1}
+      .cta{padding:48px 36px}
+    }
+
+    @media(max-width:700px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      .nav{height:72px}
+      nav{
+        display:none;
+        position:absolute;
+        top:72px;left:14px;right:14px;
+        background:#fff;
+        padding:13px;
+        border-radius:18px;
+        box-shadow:0 18px 45px rgba(0,0,0,.12);
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+      }
+      nav.open{display:flex}
+      nav a{padding:12px 10px}
+      .nav-btn{display:none}
+      .menu{display:block}
+      .hero{padding-top:112px;min-height:auto}
+      h1{font-size:51px}
+      .hero-copy{font-size:15px}
+      .hero-image{height:490px}
+      .hero-badge{left:12px}
+      section{padding:75px 0}
+      .service-grid{grid-template-columns:1fr}
+      .service{min-height:220px}
+      .about-photo img{height:470px}
+      .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-auto-rows:170px;
+        gap:8px;
+      }
+      .gallery-item{border-radius:14px}
+      .gallery-caption{left:8px;right:8px;bottom:8px;font-size:10px}
+      .cta{
+        display:block;
+        padding:36px 24px;
+        border-radius:24px;
+      }
+      .cta .btn{margin-top:24px}
+      .contact-card,.contact-photo{padding:25px}
+      .contact-photo img{height:300px}
+      .overlay-tag{left:40px;bottom:39px}
+      .footer-row{flex-direction:column;text-align:center}
+      .float{width:54px;height:54px;right:15px;bottom:15px}
+    }
+  </style>
+</head>
+
+<body>
+
+<header id="header">
+  <div class="container nav">
+    <a class="logo" href="#inicio" aria-label="Vanya Esmalteira">
+      <div class="logo-icon">V</div>
+      <div>
+        <strong>Vanya Esmalteira</strong>
+        <span>Unhas & Beleza</span>
+      </div>
+    </a>
+
+    <nav id="nav">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <a class="nav-btn" href="#contato">Agendar horário</a>
+    <button class="menu" id="menu" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+
+      <div class="reveal">
+        <div class="eyebrow">Manicure • Pedicure • Nail Design</div>
+        <h1>Suas unhas, do seu jeito e com <em>muito mais estilo.</em></h1>
+
+        <p class="hero-copy">
+          Cuidados para mãos e pés com acabamento delicado e apaixonante.
+          Aqui você encontra manicure, pedicure, blindagem, banho de gel,
+          unhas postiças e alongamentos em gel.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#contato">Quero agendar <span>→</span></a>
+          <a class="btn outline" href="#galeria">Ver trabalhos</a>
+        </div>
+
+        <div class="hero-info">
+          <div class="mini-stat">
+            <strong>44+</strong>
+            <span>publicações</span>
+          </div>
+          <div class="mini-stat">
+            <strong>Unhas em gel</strong>
+            <span>acabamento personalizado</span>
+          </div>
+          <div class="mini-stat">
+            <strong>Atendimento</strong>
+            <span>feito com carinho</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap reveal">
+        <img class="hero-image" src="https://i.imgur.com/yyj7X7n.jpeg" alt="Trabalho de unhas da Vanya Esmalteira">
+        <div class="hero-badge">
+          <strong>@vanyaesmalteira1929</strong>
+          <span>Manicure e pedicure • Nail design</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="services" id="servicos">
+    <div class="container">
+
+      <div class="section-head center reveal">
+        <div class="eyebrow">Serviços</div>
+        <h2 class="section-title">Beleza nos mínimos detalhes.</h2>
+        <p class="subtitle">
+          Escolha o cuidado que combina com você e deixe suas unhas prontas para qualquer ocasião.
+        </p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service reveal">
+          <span class="service-number">01</span>
+          <div class="service-icon">♡</div>
+          <h3>Manicure</h3>
+          <p>Cuidado das unhas das mãos com acabamento bonito, delicado e personalizado.</p>
+        </article>
+
+        <article class="service reveal">
+          <span class="service-number">02</span>
+          <div class="service-icon">✦</div>
+          <h3>Pedicure</h3>
+          <p>Cuidados para os pés e unhas, com acabamento caprichado e confortável.</p>
+        </article>
+
+        <article class="service reveal">
+          <span class="service-number">03</span>
+          <div class="service-icon">✧</div>
+          <h3>Blindagem</h3>
+          <p>Uma opção para quem busca mais resistência e um acabamento elegante nas unhas.</p>
+        </article>
+
+        <article class="service reveal">
+          <span class="service-number">04</span>
+          <div class="service-icon">♢</div>
+          <h3>Banho de Gel</h3>
+          <p>Visual sofisticado e brilho marcante para valorizar o formato natural das unhas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container about-grid">
+
+      <div class="about-photo reveal">
+        <img src="https://i.imgur.com/kvWYrQx.jpeg" alt="Procedimento de manicure">
+      </div>
+
+      <div class="reveal">
+        <div class="eyebrow">Sobre o atendimento</div>
+        <h2 class="section-title">Mais do que fazer unhas: criar um momento só seu.</h2>
+
+        <p>
+          O trabalho da Vanya é voltado para quem gosta de unhas bem cuidadas,
+          femininas e com acabamento caprichado.
+        </p>
+
+        <p>
+          A proposta é unir técnica, cuidado e criatividade para que cada cliente
+          saia satisfeita com o resultado.
+        </p>
+
+        <ul class="checks">
+          <li><span class="check">✓</span> Atendimento personalizado</li>
+          <li><span class="check">✓</span> Acabamento delicado e detalhado</li>
+          <li><span class="check">✓</span> Opções em gel e alongamento</li>
+          <li><span class="check">✓</span> Estilos clássicos ou mais marcantes</li>
+        </ul>
+
+        <a class="btn" href="#contato">Agendar meu horário →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="gallery" id="galeria">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div class="eyebrow">Portfólio</div>
+        <h2 class="section-title">Alguns trabalhos para você se inspirar.</h2>
+        <p class="subtitle">Delicadas, clássicas, alongadas ou cheias de personalidade.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="https://i.imgur.com/6CSq2oV.jpeg" alt="Unhas em gel">
+          <div class="gallery-caption">Alongamento e acabamento sofisticado</div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <img src="https://i.imgur.com/bdaIKGa.jpeg" alt="Unhas delicadas">
+          <div class="gallery-caption">Delicadeza nos detalhes</div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <img src="https://i.imgur.com/jvDDUHg.jpeg" alt="Esmaltação e nail design">
+          <div class="gallery-caption">Nail design personalizado</div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <img src="https://i.imgur.com/yyj7X7n.jpeg" alt="Resultado de manicure">
+          <div class="gallery-caption">Resultado feito com carinho</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="differentials">
+    <div class="container">
+
+      <div class="section-head center reveal">
+        <div class="eyebrow">Por que escolher</div>
+        <h2 class="section-title">Seu momento de beleza merece atenção.</h2>
+        <p class="subtitle">Tudo pensado para você se sentir bem do começo ao fim.</p>
+      </div>
+
+      <div class="diff-grid">
+        <article class="diff reveal">
+          <div class="num">01 • Cuidado</div>
+          <h3>Atendimento próximo</h3>
+          <p>Um atendimento acolhedor, com conversa e atenção ao que você realmente deseja.</p>
+        </article>
+
+        <article class="diff reveal">
+          <div class="num">02 • Estilo</div>
+          <h3>Seu estilo em cada unha</h3>
+          <p>Do básico elegante ao visual mais marcante, o acabamento é adaptado à sua preferência.</p>
+        </article>
+
+        <article class="diff reveal">
+          <div class="num">03 • Detalhes</div>
+          <h3>Capricho em cada etapa</h3>
+          <p>Preparação, esmaltação e finalização recebem atenção para entregar um resultado bonito.</p>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h2>Que tal sair daqui com as unhas do jeitinho que você imaginou?</h2>
+          <p>Fale com a Vanya e consulte os horários disponíveis para o seu próximo atendimento.</p>
+        </div>
+        <a class="btn" href="https://www.instagram.com/vanyaesmalteira1929/" target="_blank" rel="noopener">
+          Falar pelo Instagram →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="container">
+
+      <div class="section-head center reveal">
+        <div class="eyebrow">Agendamento</div>
+        <h2 class="section-title">Reserve seu momento.</h2>
+        <p class="subtitle">Entre em contato para consultar disponibilidade e escolher seu serviço.</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-card reveal">
+          <h3>Vamos marcar?</h3>
+
+          <div class="contact-line">
+            <div class="contact-icon">◎</div>
+            <div>
+              <small>Instagram profissional</small>
+              <strong>@vanyaesmalteira1929</strong>
+            </div>
+          </div>
+
+          <div class="contact-line">
+            <div class="contact-icon">♡</div>
+            <div>
+              <small>Perfil pessoal</small>
+              <strong>@vanyamattos1920</strong>
+            </div>
+          </div>
+
+          <div class="contact-line">
+            <div class="contact-icon">✦</div>
+            <div>
+              <small>Serviços</small>
+              <strong>Manicure • Pedicure • Gel • Postiça • Blindagem</strong>
+            </div>
+          </div>
+
+          <button class="btn" id="openModal" style="width:100%;margin-top:9px;">
+            Solicitar horário
+          </button>
+        </div>
+
+        <div class="contact-photo reveal">
+          <img src="https://i.imgur.com/bdaIKGa.jpeg" alt="Portfólio Vanya Esmalteira">
+          <div class="overlay-tag">Unhas feitas para valorizar seu estilo ✨</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>
+      <div class="footer-brand">Vanya Esmalteira</div>
+      <p>Manicure • Pedicure • Blindagem • Banho de Gel</p>
+    </div>
+
+    <div class="social">
+      <a href="https://www.instagram.com/vanyaesmalteira1929/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+      <a href="https://www.instagram.com/vanyamattos1920/" target="_blank" rel="noopener" aria-label="Instagram pessoal">VM</a>
+    </div>
+
+    <p>© <span id="year"></span> Vanya Esmalteira. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<a class="float" href="https://www.instagram.com/vanyaesmalteira1929/" target="_blank" rel="noopener" aria-label="Abrir Instagram">IG</a>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" id="closeModal" aria-label="Fechar">×</button>
+
+    <h2>Solicitar horário</h2>
+    <p>Preencha seus dados e o site abrirá o Instagram profissional da Vanya para você continuar o atendimento.</p>
+
+    <form id="appointmentForm">
+      <div class="field">
+        <label for="name">Seu nome</label>
+        <input id="name" type="text" placeholder="Digite seu nome" required>
+      </div>
+
+      <div class="field">
+        <label for="service">Serviço</label>
+        <select id="service" required>
+          <option value="">Selecione</option>
+          <option>Manicure</option>
+          <option>Pedicure</option>
+          <option>Blindagem</option>
+          <option>Banho de gel</option>
+          <option>Unhas postiças</option>
+          <option>Unhas em gel</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="day">Melhor dia ou período</label>
+        <input id="day" type="text" placeholder="Ex.: sábado à tarde">
+      </div>
+
+      <button class="btn" type="submit">Continuar no Instagram →</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Header
+  const header = document.getElementById("header");
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 28);
+  });
+
+  // Menu mobile
+  const menuBtn = document.getElementById("menu");
+  const nav = document.getElementById("nav");
+
+  menuBtn.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    menuBtn.textContent = nav.classList.contains("open") ? "×" : "☰";
+  });
+
+  document.querySelectorAll("nav a").forEach(a => {
+    a.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menuBtn.textContent = "☰";
+    });
+  });
+
+  // Animações ao entrar na tela
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.12});
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  // Modal
+  const modal = document.getElementById("modal");
+  const openModalBtn = document.getElementById("openModal");
+  const closeModalBtn = document.getElementById("closeModal");
+
+  function openModal(){
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+    setTimeout(() => document.getElementById("name").focus(), 100);
+  }
+
+  function closeModal(){
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  openModalBtn.addEventListener("click", openModal);
+  closeModalBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", event => {
+    if(event.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", event => {
+    if(event.key === "Escape") closeModal();
+  });
+
+  // Formulário
+  document.getElementById("appointmentForm").addEventListener("submit", event => {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const service = document.getElementById("service").value;
+    const day = document.getElementById("day").value.trim() || "a combinar";
+
+    const text =
+      `Olá, Vanya! Meu nome é ${name}. Gostaria de agendar um horário.%0A%0A` +
+      `Serviço: ${service}%0A` +
+      `Melhor dia/período: ${day}`;
+
+    // O Instagram não possui o mesmo formato universal de envio de mensagem
+    // por URL que o WhatsApp. Por isso, o formulário prepara a mensagem
+    // e abre o perfil profissional.
+    navigator.clipboard?.writeText(
+      `Olá, Vanya! Meu nome é ${name}. Gostaria de agendar um horário. Serviço: ${service}. Melhor dia/período: ${day}.`
+    ).catch(() => {});
+
+    window.open("https://www.instagram.com/vanyaesmalteira1929/", "_blank", "noopener");
+    closeModal();
+
+    alert("Mensagem preparada! O Instagram profissional foi aberto. Se o seu navegador permitir, o texto também foi copiado para a área de transferência.");
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
